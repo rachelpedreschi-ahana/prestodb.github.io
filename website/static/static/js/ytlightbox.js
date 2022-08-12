@@ -12,22 +12,18 @@ ytlightbox.querySelector(".ytlightbox-close").addEventListener('click', ev => {
   document.getElementById('ytlightboxembed').innerHTML="";
 })
 
-function ytlightboxinit(){
-  document.querySelectorAll('.ytlightbox').forEach(item => {
-    item.addEventListener('click', ev => {
-      ev.preventDefault();
-      target = ev.currentTarget;
-      const urlarr = target.href.split("?v="); 
-      const url = urlarr[1].split("&")[0];
-      let ytiframe = `<iframe src="https://www.youtube.com/embed/${url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-      document.getElementById('ytlightboxembed').innerHTML=ytiframe;
-      document.body.style.overflow="hidden";
-      ytlightbox.className = "ytlightbox-overlay on";
-      setTimeout(function() {
-        ytlightbox.className = "ytlightbox-overlay on showing";
-      }, 0.5)
-    })
+document.querySelectorAll('.ytlightbox').forEach(item => {
+  item.addEventListener('click', ev => {
+    ev.preventDefault();
+    target = ev.currentTarget;
+    const urlarr = target.href.split("?v="); 
+    const url = urlarr[1].split("&")[0];
+    let ytiframe = `<iframe src="https://www.youtube.com/embed/${url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    document.getElementById('ytlightboxembed').innerHTML=ytiframe;
+    document.body.style.overflow="hidden";
+    ytlightbox.className = "ytlightbox-overlay on";
+    setTimeout(function() {
+      ytlightbox.className = "ytlightbox-overlay on showing";
+    }, 0.5)
   })
-}
-
-ytlightboxinit()
+})
